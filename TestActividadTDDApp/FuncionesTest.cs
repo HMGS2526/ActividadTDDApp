@@ -34,5 +34,41 @@ namespace TestActividadTDDApp
         {
             Assert.AreEqual(3628800L, Funciones.CalcularFactorial(10));
         }
+        [TestMethod]
+        public void EsContrasenyaValida_Null_DevuelveFalse()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida(null));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_Vacia_DevuelveFalse()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida(""));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_MenosDe8Caracteres_DevuelveFalse()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida("abc#123"));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_SinAlmohadilla_DevuelveFalse()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida("abcdefgh123"));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_Exactamente8ConAlmohadilla_DevuelveTrue()
+        {
+            Assert.IsTrue(Funciones.EsContrasenyaValida("abcdef#1"));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_LargaConAlmohadilla_DevuelveTrue()
+        {
+            Assert.IsTrue(Funciones.EsContrasenyaValida("MiClave#Segura2026"));
+        }
     }
+
 } 
